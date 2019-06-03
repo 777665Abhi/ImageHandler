@@ -2,6 +2,22 @@ In this Library, user can pick image from gallery and click image from camera ,
 -set image  into imageview
 -get file to upload to server
 
+To get a Git project into your build:
+Add it in your root build.gradle at the end of repositories:
+    	allprojects {
+    		repositories {
+    			...
+    			maven { url 'https://jitpack.io' }
+    		}
+    	}
+
+ Add the dependency
+        dependencies {
+        	        implementation 'com.github.777665Abhi:ImageHandler:Tag'
+        	}
+
+
+
 Usage
 
 To check if permission of camera is enabled
