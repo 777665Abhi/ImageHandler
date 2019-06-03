@@ -4,6 +4,7 @@ In this Library, user can pick image from gallery and click image from camera ,
 
 To get a Git project into your build:
 Add it in your root build.gradle at the end of repositories:
+
     	allprojects {
     		repositories {
     			...
@@ -12,6 +13,7 @@ Add it in your root build.gradle at the end of repositories:
     	}
 
  Add the dependency
+ 
         dependencies {
         	        implementation 'com.github.777665Abhi:ImageHandler:Tag'
         	}
@@ -21,27 +23,35 @@ Add it in your root build.gradle at the end of repositories:
 Usage
 
 To check if permission of camera is enabled
+
     ImageHandler(this).isCameraPermissionAvailable()
 
 Request Permission for camera
+
     ImageHandler(this).requestCameraPermission()
 
 To check if permission of Write  is enabled
+
     ImageHandler(this).isWritePermission()
 
 Request Permission for Write
+
     ImageHandler(this).requestWritePermission()
 
 To show image popup and select from either camera or gallery
+
     ImageHandler(this).showImagePickerDialog()
 
 To set image from camera
+
      ImageHandler(this).setImageByCamera()
 
 To set image from gallery
+
        ImageHandler(this).setImageByGallery()
 
 To set Image selected into imageview in onActivityResult method
+
           override fun onActivityResult(requestCode: Int, resultCode: Int, imageIntent: Intent?) {
                super.onActivityResult(requestCode, resultCode, imageIntent)
                // setting the image in image View
@@ -54,6 +64,7 @@ To set Image selected into imageview in onActivityResult method
            }
 
 Get image file to upload to server in onActivityResult method
+
           if (resultCode == Activity.RESULT_OK) {
                              // Get a file to upload to server
                              var file = ImageHandler(this).returnFile(requestCode, resultCode, imageIntent)
