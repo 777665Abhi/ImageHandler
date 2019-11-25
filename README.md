@@ -62,6 +62,12 @@ To set Image selected into imageview in onActivityResult method
                    var file = ImageHandler(this).returnFile(requestCode, resultCode, imageIntent)
                }
            }
+           
+We also need to override the onRequestPermissionsResult() to handle the permission automatically.     
+           
+           override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<String>, grantResults: IntArray ) {
+        ImageHandler(this).permissionResponse(requestCode, permissions, grantResults)
+    }
 
 Get image file to upload to server in onActivityResult method
 
