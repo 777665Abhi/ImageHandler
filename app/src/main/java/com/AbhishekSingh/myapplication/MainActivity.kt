@@ -15,6 +15,7 @@ class MainActivity : AppCompatActivity() {
         buttonClick()
     }
 
+    /*Handle the Click Listener*/
     private fun buttonClick() {
         btPhoto.setOnClickListener {
             ImageHandler(this).showImagePickerDialog()
@@ -27,6 +28,7 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+   /*Here we get the Image and file to upload*/
     override fun onActivityResult(requestCode: Int, resultCode: Int, imageIntent: Intent?) {
         super.onActivityResult(requestCode, resultCode, imageIntent)
         // setting the image in image View
@@ -36,6 +38,13 @@ class MainActivity : AppCompatActivity() {
             // Get a file to upload to server
             var file = ImageHandler(this).returnFile(requestCode, resultCode, imageIntent)
         }
+    }
+
+    /*To handle the result of requested permissions */
+    override fun onRequestPermissionsResult(
+        requestCode: Int, permissions: Array<String>, grantResults: IntArray
+    ) {
+        ImageHandler(this).permissionResponse(requestCode, permissions, grantResults)
     }
 
 }
