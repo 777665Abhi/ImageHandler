@@ -139,7 +139,7 @@ open class ImageHandler(private val mContext: Context) {
                 fileToUpload?.also {
                     val photoURI: Uri = FileProvider.getUriForFile(
                         mContext,
-                        "com.example.android.fileprovider",
+                        "com.example.android.fileprovider.as",
                         it
                     )
                     takePictureIntent.putExtra(MediaStore.EXTRA_OUTPUT, photoURI)
