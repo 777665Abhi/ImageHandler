@@ -22,21 +22,6 @@ Add it in your root build.gradle at the end of repositories:
 
 Usage
 
-To check if permission of camera is enabled
-
-    ImageHandler(this).isCameraPermissionAvailable()
-
-Request Permission for camera
-
-    ImageHandler(this).requestCameraPermission()
-
-To check if permission of Write  is enabled
-
-    ImageHandler(this).isWritePermission()
-
-Request Permission for Write
-
-    ImageHandler(this).requestWritePermission()
 
 To show image popup and select from either camera or gallery
 
@@ -75,4 +60,31 @@ Get image file to upload to server in onActivityResult method
                              // Get a file to upload to server
                              var file = ImageHandler(this).returnFile(requestCode, resultCode, imageIntent)
                          }
+                         
+You need to declare the File Provider in androidMainfest.xml as below
+
+
+              <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="com.example.android.fileprovider.as"
+            android:exported="false"
+            android:grantUriPermissions="true"
+            tools:replace="android:authorities">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_paths"
+                tools:replace="android:resource" />
+        </provider>
+        
+  here the android:authorities="com.example.android.fileprovider.as"  must be same, as it is used in dependency.
+  
+  We also need to declare the  android:resource="@xml/file_paths" in project in xml folder under Res folder
+  file_paths.xml
+         
+            <?xml version="1.0" encoding="utf-8"?>
+          <paths xmlns:android="http://schemas.android.com/apk/res/android">
+          <external-path name="my_images" path="." />
+          </paths>
+  
+        
 
